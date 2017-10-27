@@ -1,7 +1,7 @@
 (jbuild_version 1)
 
-(executable
- ((name sum)
-  (libraries (batteries))
+(executables
+ ((names (sum game_of_life))
+  (libraries (batteries lambda-term lwt lwt.unix camomile))
  ))
 
