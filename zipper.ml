@@ -30,18 +30,17 @@ let extract = function
 let duplicate =
   let
     duplicate x =
-      (x , x)
+    (x , x)
   in
-    function
-    | Zipper (left, value, right) as a -> 
-      Zipper (BatList.unfold a (shift_left %> BatOption.map duplicate)
-             , a
-             , BatList.unfold a (shift_right %> BatOption.map duplicate)
-             )
+  function
+  | Zipper (_, _, _) as a ->
+    Zipper (BatList.unfold a (shift_left %> BatOption.map duplicate)
+           , a
+           , BatList.unfold a (shift_right %> BatOption.map duplicate)
+           )
 (* aka cobind *)
 let extend f zipper =
   map f (duplicate zipper)
-  
 
 (* Helpers *)
 
